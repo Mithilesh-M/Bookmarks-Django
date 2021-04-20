@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import Bookmarks
 from .filters import BookmarksFilter
 from .forms import BookmarkForms
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 def index(request):
@@ -12,10 +15,17 @@ def index(request):
     form = BookmarkForms(request.POST or None)
     if (form.is_valid()):
         form.save()
-
     context = {
         'filter': namefilter,
         'form': form
     }
-
     return render(request, 'bookmarks.html', context=context)
+
+
+def Deletebookmarks(request,pk):
+    Bookmarks.objects.get(pk=pk).delete()
+    return HttpResponseRedirect(reverse('index'))
+
+
+
+
