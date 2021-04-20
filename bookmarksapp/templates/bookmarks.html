@@ -35,8 +35,8 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-      <a class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginForm" style="font-size:12px" href="">Add New Bookmark</a>
-      <a class="dropdown-item" href="#">Add New Folder</a>
+      <a class="btn btn-default btn-rounded" style="display:block" data-toggle="modal" data-target="#modalLoginForm" href="">Add Bookmark</a>
+      <a class="btn btn-default btn-rounded" style="display:block" href="#">Add Folder</a>
     </div>
   </div>
   </div>
@@ -53,7 +53,20 @@
     {% if filter.qs %}
     <ul class="list-group">
     {% for bookmark in filter.qs %}
-        <li class="list-group-item">{{ bookmark.name }}--{{ bookmark.url }}</li>
+        <li class="list-group-item">{{ bookmark.name }}--{{ bookmark.url }}
+        <div class="dropdown show" style="display: inline-block; float: right;">
+          <a class="btn" href="#" role="button" id="dropdownItemLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-ellipsis-v" style="color: grey;"></i>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="btn btn-default btn-rounded" style="display: block;" data-toggle="modal" data-target="#modalLoginForm" href="">Update</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="#">Delete</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="#">Detail</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="#">Open</a>
+          </div>
+        </div>
+        </li>
     {% endfor %}
     </ul>
   {% else %}
