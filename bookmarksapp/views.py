@@ -11,7 +11,10 @@ def index(request):
 
     bookmarks = Bookmarks.objects.all()
     namefilter = BookmarksFilter(request.GET, queryset=bookmarks)
-    form = BookmarkForms(request.POST or None)
+    if(request.POST):
+        form = BookmarkForms(request.POST)
+    else:
+        form = BookmarkForms(initial={'url':'https://www.'})
     if (form.is_valid()):
         form.save()
     context = {
