@@ -20,12 +20,14 @@
   <div class="container-fluid" >
     <h2 class="navbar-brand" style="color: white;">Bookmarks</h2>
     <div class="input-group container-fluid" style="width: 50%;">
+      <form method="get" style="display:flex; width: 100%;">
       <div class="input-group-append">
-        <button class="btn" type="button" style="background-color: darkblue;">
+        <button class="btn" type="submit" style="background-color: darkblue;">
           <i class="fa fa-search" style="color: white;"></i>
         </button>
       </div>
-      <input style="background-color:darkblue ; border: darkblue; color: white;" type="text" class="form-control" placeholder="Bookmarks">
+      <input style="background-color:darkblue ; border: darkblue; color: white;" type="text" class="form-control" name="name" id="id_name" placeholder="Bookmarks">
+      </form>
     </div>
   <div class="dropdown show">
     <a class="btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,22 +50,14 @@
       </div>
 
   <div class="col-sm-10 pt-3">
-  <form method="get">
-        {{ filter.form.as_p }}
-        <input type="submit" />
-    </form>
-
-    <h5>Result</h5>
     {% if filter.qs %}
-    <ul>
+    <ul class="list-group">
     {% for bookmark in filter.qs %}
-      <li>
-        <a href="">{{ bookmark.name }}</a>
-      </li>
+        <li class="list-group-item">{{ bookmark.name }}--{{ bookmark.url }}</li>
     {% endfor %}
     </ul>
   {% else %}
-    <p>There are no event from the filter.</p>
+    <p>There are no bookmarks.</p>
   {% endif %}
     </div>
   </div>
