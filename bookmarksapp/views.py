@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Bookmarks
 from .filters import BookmarksFilter
 from .forms import BookmarkForms
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -25,7 +24,6 @@ def index(request):
 def Deletebookmarks(request,pk):
     Bookmarks.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('index'))
-
 
 
 

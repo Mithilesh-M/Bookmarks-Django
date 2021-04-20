@@ -63,7 +63,7 @@
             <a class="btn btn-default btn-rounded" style="display: block;" data-toggle="modal" data-target="#modalLoginForm" href="">Update</a>
             <a class="btn btn-default btn-rounded" style="display: block;" href="{% url 'delete-bookmarks' bookmark.id %}">Delete</a>
             <a class="btn btn-default btn-rounded" style="display: block;" href="#">Detail</a>
-            <a class="btn btn-default btn-rounded" style="display: block;" href="#">Open</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="{{ bookmark.url }}" target="_blank">Open</a>
           </div>
         </div>
         </li>
