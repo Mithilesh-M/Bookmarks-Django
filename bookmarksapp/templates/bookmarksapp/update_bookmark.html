@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <button style="border-radius: 50%;border-color: black;" disabled>
+    <a href="{% url 'index' %}">
+    <i class="fa fa-arrow-left" onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" ></i>
+    </a>
+  </button>
+  <button style="border-color: black;" disabled>
+    <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{% url 'delete-bookmarks' bookmark.id %}" style="text-decoration: none;">Delete
+    </a>
+  </button>
+  <br><br>
+  <h3>Update Bookmark</h3>
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

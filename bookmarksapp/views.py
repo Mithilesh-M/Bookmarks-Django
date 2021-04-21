@@ -47,4 +47,21 @@ def Detailbookmarks(request,pk):
     }
     return render(request, 'bookmarksapp/detail_bookmark.html', context=context)
 
+def Updatebookmarks(request,pk):
+    """View function for Detail bookmark"""
+    folder_list = Folder.objects.all()
+    bookmark = get_object_or_404(Bookmarks,pk=pk)
+    if (request.POST):
+        bookmarkform = BookmarkForms(request.POST,instance=bookmark)
+    else:
+        bookmarkform = BookmarkForms(initial={'name':bookmark.name,'url':bookmark.url,'description':bookmark.description,'folder':bookmark.folder,'tags':bookmark.tags.all})
+    if(bookmarkform.is_valid()):
+        bookmarkform.save()
+        return HttpResponseRedirect(reverse('index'))
+    context = {
+        'folder_list': folder_list,
+        'form': bookmarkform,
+        'bookmark': bookmark,
+    }
+    return render(request, 'bookmarksapp/update_bookmark.html', context=context)
 

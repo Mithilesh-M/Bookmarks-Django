@@ -1,27 +1,34 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <button style="border-radius: 50%;border-color: blue;">
+  <button style="border-radius: 50%;border-color: black;" disabled>
     <a href="{% url 'index' %}">
-    <i class="fa fa-arrow-left" style="color: blue;"></i>
+    <i class="fa fa-arrow-left" onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" ></i>
     </a>
   </button>
-  <button style="border-color: blue;">
-    <a href="{% url 'delete-bookmarks' bookmark.id %}">Delete
+  <button style="border-color: black;" disabled>
+    <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{% url 'delete-bookmarks' bookmark.id %}" style="text-decoration: none;">Delete
     </a>
   </button>
-  <button style="border-color: blue;">
-    <a href="{{ bookmark.url }}" target="_blank">Open Page
+  <button style="border-color: black;" disabled>
+    <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{{ bookmark.url }}" target="_blank" style="text-decoration: none;">Open Page
     </a>
   </button>
-  <button style="border-color: blue;">
-    <a href="{% url 'index' %}">Update
+  <button style="border-color: black;" disabled>
+    <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{% url 'update-bookmarks' bookmark.id %}" style="text-decoration: none;">Update
     </a>
   </button>
+  <br><br>
   <h3>Bookmark Detail</h3>
   <p><strong>Name: </strong>{{ bookmark.name }}</p>
   <p><strong>URL: </strong><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a></p>
   <p><strong>Folder: </strong>{{ bookmark.folder }}</p>
   <p><strong>Description: </strong>{{ bookmark.description }}</p>
-  <p><strong>Tags: </strong>{{ bookmark.tags }}</p>
+  <p><strong>Tags: </strong>
+    <ul>
+    {% for bookmarks in bookmark.tags.all %}
+    <li>{{ bookmarks.name }}</li>
+    {% endfor %}
+    </ul>
+  </p>
 {% endblock %}
