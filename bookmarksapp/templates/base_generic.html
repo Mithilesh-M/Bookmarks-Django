@@ -19,16 +19,7 @@
  <nav class="navbar navbar-expand-lg" style="background-color: blue">
   <div class="container-fluid" >
     <h2 class="navbar-brand" style="color: white;">Bookmarks</h2>
-    <div class="input-group container-fluid" style="width: 50%;">
-      <form method="get" style="display:flex; width: 100%;">
-      <div class="input-group-append">
-        <button class="btn" type="submit" style="background-color: darkblue;">
-          <i class="fa fa-search" style="color: white;"></i>
-        </button>
-      </div>
-      <input style="background-color:darkblue ; border: darkblue; color: white;" type="text" class="form-control" name="name" id="id_name" placeholder="Bookmarks">
-      </form>
-    </div>
+    {% block search %} {% endblock %}
   <div class="dropdown show">
     <a class="btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fa fa-ellipsis-v" style="color: white;"></i>

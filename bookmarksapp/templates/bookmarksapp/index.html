@@ -1,5 +1,19 @@
 {% extends "base_generic.html" %}
 
+{% block search %}
+
+<div class="input-group container-fluid" style="width: 50%;">
+      <form method="get" style="display:flex; width: 100%;">
+      <div class="input-group-append">
+        <button class="btn" type="submit" style="background-color: darkblue;">
+          <i class="fa fa-search" style="color: white;"></i>
+        </button>
+      </div>
+      <input style="background-color:darkblue ; border: darkblue; color: white;" type="text" class="form-control" name="name" id="id_name" placeholder="Bookmarks">
+      </form>
+    </div>
+
+{% endblock %}
 {% block content %}
     {% if filter.qs %}
     <ul class="list-group">
