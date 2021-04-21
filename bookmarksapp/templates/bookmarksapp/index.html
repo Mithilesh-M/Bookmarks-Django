@@ -31,7 +31,7 @@
     {% if filter.qs %}
     <ul class="list-group">
     {% for bookmark in filter.qs %}
-        <li class=" list-group-item flex-column align-items-start"><a style="text-decoration: none; color:black;" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'"  href="{{ bookmark.url }}" target="_blank">{{ bookmark.name }}--{{ bookmark.url }}
+        <li class=" list-group-item flex-column align-items-start"><a style="text-decoration: none; color:black;" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'"  href="{{ bookmark.url }}" target="_blank"><strong>{{ bookmark.name }}</strong><span> | {{ bookmark.url }}</span>
         <div class="dropdown show" style="display: inline-block; float: right;">
           <a class="btn" href="#" role="button" id="dropdownItemLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-ellipsis-v" style="color: grey;"></i>
