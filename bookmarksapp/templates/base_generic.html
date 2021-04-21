@@ -20,16 +20,7 @@
   <div class="container-fluid" >
     <h2 class="navbar-brand" style="color: white;">Bookmarks</h2>
     {% block search %} {% endblock %}
-  <div class="dropdown show">
-    <a class="btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa fa-ellipsis-v" style="color: white;"></i>
-    </a>
-
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-      <a class="btn btn-default btn-rounded" style="display:block" data-toggle="modal" data-target="#modalBookmarkForm" href="" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Add Bookmark</a>
-      <a class="btn btn-default btn-rounded" style="display:block" data-toggle="modal" data-target="#modalFolderForm" href="#" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Add Folder</a>
-    </div>
-  </div>
+    {% block create %} {% endblock %}
   </div>
 </nav>
 <div class="container-fluid">
