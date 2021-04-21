@@ -1,6 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+    <button style="border-color: black;" disabled>
+        <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{% url 'delete-folder' folder.id %}" style="text-decoration: none;">Delete Folder
+        </a>
+    </button>
+    <br><br>
     {% if folder.bookmarks_set.all %}
     <ul class="list-group">
     {% for bookmark in folder.bookmarks_set.all %}

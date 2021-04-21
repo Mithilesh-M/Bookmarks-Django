@@ -87,3 +87,7 @@ def FolderListUnknown(request):
         'folder': folder,
     }
     return render(request, 'bookmarksapp/list_folder_unknown.html', context=context)
+
+def Deletefolder(request,pk):
+    Folder.objects.get(pk=pk).delete()
+    return HttpResponseRedirect(reverse('index'))
