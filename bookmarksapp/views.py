@@ -17,7 +17,7 @@ def index(request):
         bookmarkform = BookmarkForms(request.POST)
         folderform = FolderForm(request.POST)
     else:
-        bookmarkform = BookmarkForms(data={'url':'https://www.'})
+        bookmarkform = BookmarkForms(initial={'url':'https://www.'})
         folderform = FolderForm()
     if (bookmarkform.is_valid()):
         bookmarkform.save()
