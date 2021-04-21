@@ -6,4 +6,4 @@ class BookmarkForms(forms.ModelForm):
 
     class Meta:
         model = Bookmarks
-        fields = ['name','url']
+        fields = ['name','url','description','tags']
