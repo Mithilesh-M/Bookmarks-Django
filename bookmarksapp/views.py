@@ -17,12 +17,14 @@ def index(request):
         bookmarkform = BookmarkForms(request.POST)
         folderform = FolderForm(request.POST)
     else:
-        bookmarkform = BookmarkForms(initial={'url':'https://www.'})
+        bookmarkform = BookmarkForms(data={'url':'https://www.'})
         folderform = FolderForm()
     if (bookmarkform.is_valid()):
         bookmarkform.save()
+        return HttpResponseRedirect(reverse('index'))
     if (folderform.is_valid()):
         folderform.save()
+        return HttpResponseRedirect(reverse('index'))
     context = {
         'filter': namefilter,
         'folder_list': folder_list,
