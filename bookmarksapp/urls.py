@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:pk>/delete/', views.Deletebookmarks, name='delete-bookmarks'),
+    path('<int:pk>/bookmarkdetail/', views.Detailbookmarks, name='detail-bookmarks'),
 ]
