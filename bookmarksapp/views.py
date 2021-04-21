@@ -67,3 +67,13 @@ def Updatebookmarks(request,pk):
     }
     return render(request, 'bookmarksapp/update_bookmark.html', context=context)
 
+
+def FolderList(request,pk):
+    """View function for list Folder bookmark"""
+    folder_list = Folder.objects.all()
+    folder = get_object_or_404(Folder, pk=pk)
+    context = {
+        'folder_list': folder_list,
+        'folder': folder,
+    }
+    return render(request, 'bookmarksapp/list_folder.html', context=context)

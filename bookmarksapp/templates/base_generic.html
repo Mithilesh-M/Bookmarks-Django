@@ -27,10 +27,11 @@
     <div class="row">
       <div class="mysidebar col-sm-2 pt-2">
         <ul class="sidebar-nav" style="list-style-type: none;">
+          <li> <a href="{% url 'index' %}">Home</a></li>
           <li>Bookmarks Bar
             <ul>
               {% for folder in folder_list %}
-              <li><a href="">{{ folder.name }}</a></li>
+              <li><a href="{% url 'list-folder' folder.id %}">{{ folder.name }}</a></li>
               {% endfor %}
             </ul>
           </li>
