@@ -91,3 +91,22 @@ def FolderListUnknown(request):
 def Deletefolder(request,pk):
     Folder.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('index'))
+
+
+def Updatefolder(request,pk):
+    """View function for Detail bookmark"""
+    folder_list = Folder.objects.all()
+    folder = get_object_or_404(Folder,pk=pk)
+    if (request.POST):
+        folderform = FolderForm(request.POST, instance=folder)
+    else:
+        folderform = FolderForm(initial={'name':folder.name})
+    if(folderform.is_valid()):
+        folderform.save()
+        return HttpResponseRedirect(reverse('list-folder',args=[pk]))
+    context = {
+        'folder_list': folder_list,
+        'form': folderform,
+        'folder': folder,
+    }
+    return render(request, 'bookmarksapp/update_folder.html', context=context)

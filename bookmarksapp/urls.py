@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:pk>/folder/', views.FolderList, name='list-folder'),
     path('folderunknown/', views.FolderListUnknown, name='list-folder-unknown'),
     path('<int:pk>/delete/folder', views.Deletefolder, name='delete-folder'),
+    path('<int:pk>/update/folder', views.Updatefolder, name='update-folder'),
 ]

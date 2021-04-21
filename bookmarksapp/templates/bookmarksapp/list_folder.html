@@ -5,6 +5,10 @@
         <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{% url 'delete-folder' folder.id %}" style="text-decoration: none;">Delete Folder
         </a>
     </button>
+    <button style="border-color: black;" disabled>
+        <a onmouseover = "this.style.color = 'black'" onmouseout = "this.style.color = 'blue'" href="{% url 'update-folder' folder.id %}" style="text-decoration: none;">Update Folder
+        </a>
+    </button>
     <br><br>
     {% if folder.bookmarks_set.all %}
     <ul class="list-group">
