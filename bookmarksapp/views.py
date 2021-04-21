@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Bookmarks
+from .models import Bookmarks, Folder
 from .filters import BookmarksFilter
 from .forms import BookmarkForms, FolderForm
 from django.http import HttpResponseRedirect
@@ -11,6 +11,7 @@ def index(request):
 
     bookmarks = Bookmarks.objects.all()
     namefilter = BookmarksFilter(request.GET, queryset=bookmarks)
+    folder_list = Folder.objects.all()
     if(request.POST):
         bookmarkform = BookmarkForms(request.POST)
         folderform = FolderForm(request.POST)
@@ -23,6 +24,7 @@ def index(request):
         folderform.save()
     context = {
         'filter': namefilter,
+        'folder_list': folder_list,
         'bookmarkform': bookmarkform,
         'folderform': folderform,
     }
