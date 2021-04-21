@@ -35,8 +35,8 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-      <a class="btn btn-default btn-rounded" style="display:block" data-toggle="modal" data-target="#modalLoginForm" href="" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Add Bookmark</a>
-      <a class="btn btn-default btn-rounded" style="display:block" href="#" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Add Folder</a>
+      <a class="btn btn-default btn-rounded" style="display:block" data-toggle="modal" data-target="#modalBookmarkForm" href="" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Add Bookmark</a>
+      <a class="btn btn-default btn-rounded" style="display:block" data-toggle="modal" data-target="#modalFolderForm" href="#" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Add Folder</a>
     </div>
   </div>
   </div>
@@ -76,7 +76,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="modalBookmarkForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -91,6 +91,30 @@
           {% csrf_token %}
           <table>
             {{ bookmarkform.as_table }}
+          </table>
+          <div class="modal-footer d-flex justify-content-center">
+          <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalFolderForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Create Folder</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form action="" method="post">
+          {% csrf_token %}
+          <table>
+            {{ folderform.as_table }}
           </table>
           <div class="modal-footer d-flex justify-content-center">
           <input type="submit" value="Submit">
