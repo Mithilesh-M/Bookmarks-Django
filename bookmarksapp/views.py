@@ -70,11 +70,28 @@ def Updatebookmarks(request,pk):
 
 def FolderList(request,pk):
     """View function for list Folder bookmark"""
-    folder_list = Folder.objects.all()
     folder = get_object_or_404(Folder, pk=pk)
+    bookmarks = folder.bookmarks_set.all()
+    namefilter = BookmarksFilter(request.GET, queryset=bookmarks)
+    folder_list = Folder.objects.all()
+    if (request.POST):
+        bookmarkform = BookmarkForms(request.POST)
+        folderform = FolderForm(request.POST)
+    else:
+        bookmarkform = BookmarkForms(initial={'url': 'https://www.'})
+        folderform = FolderForm()
+    if (bookmarkform.is_valid()):
+        bookmarkform.save()
+        return HttpResponseRedirect(reverse('index'))
+    if (folderform.is_valid()):
+        folderform.save()
+        return HttpResponseRedirect(reverse('index'))
     context = {
+        'filter': namefilter,
         'folder_list': folder_list,
         'folder': folder,
+        'bookmarkform': bookmarkform,
+        'folderform': folderform,
     }
     return render(request, 'bookmarksapp/list_folder.html', context=context)
 
