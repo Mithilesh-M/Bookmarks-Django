@@ -77,3 +77,13 @@ def FolderList(request,pk):
         'folder': folder,
     }
     return render(request, 'bookmarksapp/list_folder.html', context=context)
+
+def FolderListUnknown(request):
+    """View function for list Folder bookmark"""
+    folder_list = Folder.objects.all()
+    folder = Bookmarks.objects.filter(folder=None)
+    context = {
+        'folder_list': folder_list,
+        'folder': folder,
+    }
+    return render(request, 'bookmarksapp/list_folder_unknown.html', context=context)

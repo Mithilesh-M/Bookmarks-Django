@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:pk>/bookmarkdetail/', views.Detailbookmarks, name='detail-bookmarks'),
     path('<int:pk>/bookmarkupdate/', views.Updatebookmarks, name='update-bookmarks'),
     path('<int:pk>/folder/', views.FolderList, name='list-folder'),
+    path('folderunknown/', views.FolderListUnknown, name='list-folder-unknown'),
 ]
