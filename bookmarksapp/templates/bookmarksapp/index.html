@@ -25,7 +25,7 @@
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <a class="btn btn-default btn-rounded" style="display: block;" data-toggle="modal" data-target="#modalLoginForm" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'" href="">Update</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'" href="">Update</a>
             <a class="btn btn-default btn-rounded" style="display: block;" href="{% url 'delete-bookmarks' bookmark.id %}" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Delete</a>
             <a class="btn btn-default btn-rounded" style="display: block;" href="{% url 'detail-bookmarks' bookmark.id %}" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Detail</a>
             <a class="btn btn-default btn-rounded" style="display: block;" href="{{ bookmark.url }}" target="_blank" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Open</a>

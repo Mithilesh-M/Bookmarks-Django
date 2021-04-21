@@ -1,10 +1,27 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+  <button style="border-radius: 50%;border-color: blue;">
+    <a href="{% url 'index' %}">
+    <i class="fa fa-arrow-left" style="color: blue;"></i>
+    </a>
+  </button>
+  <button style="border-color: blue;">
+    <a href="{% url 'delete-bookmarks' bookmark.id %}">Delete
+    </a>
+  </button>
+  <button style="border-color: blue;">
+    <a href="{{ bookmark.url }}" target="_blank">Open Page
+    </a>
+  </button>
+  <button style="border-color: blue;">
+    <a href="{% url 'index' %}">Update
+    </a>
+  </button>
   <h3>Bookmark Detail</h3>
-  <h5>Name: {{ bookmark.name }}</h5>
-  <h5>URL: {{ bookmark.url }}</h5>
-  <h5>Folder: {{ bookmark.folder }}</h5>
-  <h5>Description: {{ bookmark.description }}</h5>
-  <h5>Tags: {{ bookmark.tags }}</h5>
+  <p><strong>Name: </strong>{{ bookmark.name }}</p>
+  <p><strong>URL: </strong><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a></p>
+  <p><strong>Folder: </strong>{{ bookmark.folder }}</p>
+  <p><strong>Description: </strong>{{ bookmark.description }}</p>
+  <p><strong>Tags: </strong>{{ bookmark.tags }}</p>
 {% endblock %}
