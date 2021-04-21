@@ -28,7 +28,7 @@ def index(request):
         'bookmarkform': bookmarkform,
         'folderform': folderform,
     }
-    return render(request, 'bookmarks.html', context=context)
+    return render(request, 'bookmarksapp/index.html', context=context)
 
 
 def Deletebookmarks(request,pk):

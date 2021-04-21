@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% if filter.qs %}
+    <ul class="list-group">
+    {% for bookmark in filter.qs %}
+        <li class=" list-group-item flex-column align-items-start"><a style="text-decoration: none; color:black;" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'"  href="{{ bookmark.url }}" target="_blank">{{ bookmark.name }}--{{ bookmark.url }}
+        <div class="dropdown show" style="display: inline-block; float: right;">
+          <a class="btn" href="#" role="button" id="dropdownItemLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-ellipsis-v" style="color: grey;"></i>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="btn btn-default btn-rounded" style="display: block;" data-toggle="modal" data-target="#modalLoginForm" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'" href="">Update</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="{% url 'delete-bookmarks' bookmark.id %}" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Delete</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="#" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Detail</a>
+            <a class="btn btn-default btn-rounded" style="display: block;" href="{{ bookmark.url }}" target="_blank" onmouseover = "this.style.color = 'blue'" onmouseout = "this.style.color = 'black'">Open</a>
+          </div>
+        </div>
+      </a>
+        </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no bookmarks.</p>
+  {% endif %}
+{% endblock %}
