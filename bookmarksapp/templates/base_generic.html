@@ -29,9 +29,9 @@
         <ul class="sidebar-nav" style="list-style-type: none;">
           <li> <a href="{% url 'index' %}">Home</a></li>
           <li>Bookmarks Bar
-            <ul>
+            <ul style="list-style-type: none;">
               {% for folder in folder_list %}
-              <li><a href="{% url 'list-folder' folder.id %}">{{ folder.name }}</a></li>
+              <li><i class="fa fa-folder" style="color:yellow;"></i> <a href="{% url 'list-folder' folder.id %}">{{ folder.name }}</a></li>
               {% endfor %}
             </ul>
           </li>

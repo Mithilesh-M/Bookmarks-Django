@@ -98,10 +98,25 @@ def FolderList(request,pk):
 def FolderListUnknown(request):
     """View function for list Folder bookmark"""
     folder_list = Folder.objects.all()
-    folder = Bookmarks.objects.filter(folder=None)
+    bookmarks = Bookmarks.objects.filter(folder=None)
+    namefilter = BookmarksFilter(request.GET, queryset=bookmarks)
+    if (request.POST):
+        bookmarkform = BookmarkForms(request.POST)
+        folderform = FolderForm(request.POST)
+    else:
+        bookmarkform = BookmarkForms(initial={'url': 'https://www.'})
+        folderform = FolderForm()
+    if (bookmarkform.is_valid()):
+        bookmarkform.save()
+        return HttpResponseRedirect(reverse('index'))
+    if (folderform.is_valid()):
+        folderform.save()
+        return HttpResponseRedirect(reverse('index'))
     context = {
+        'filter': namefilter,
         'folder_list': folder_list,
-        'folder': folder,
+        'bookmarkform': bookmarkform,
+        'folderform': folderform,
     }
     return render(request, 'bookmarksapp/list_folder_unknown.html', context=context)
 
